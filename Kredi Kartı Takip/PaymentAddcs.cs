@@ -10,13 +10,11 @@ using System.Windows.Forms;
 
 namespace Kredi_Kartı_Takip
 {
-    public partial class Form1 : Form
+    public partial class PaymentAddcs : Form
     {
-        public Form1()
+        public PaymentAddcs()
         {
             InitializeComponent();
         }
-
-       
     }
 }
