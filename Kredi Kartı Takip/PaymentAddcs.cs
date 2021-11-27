@@ -16,5 +16,15 @@ namespace Kredi_Kartı_Takip
         {
             InitializeComponent();
         }
+
+        private void textBox4_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void groupBox2_Enter(object sender, EventArgs e)
+        {
+
+        }
     }
 }
