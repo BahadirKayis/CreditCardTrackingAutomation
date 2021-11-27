@@ -22,8 +22,9 @@ namespace Kredi_Kartı_Takip
             InitializeComponent();
         }
         void paymentShow()
-        {      
-       
+        {
+            var count = db.CreditCard.OrderBy(x => x.id).ToList();
+            MessageBox.Show(count.Count().ToString());
         }
         void cardButtonAdd() {
            
