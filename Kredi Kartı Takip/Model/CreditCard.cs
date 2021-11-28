@@ -24,7 +24,7 @@ namespace Kredi_Kartı_Takip.Model
         public string bankName { get; set; }
         public string nameSurname { get; set; }
         public string number { get; set; }
-        public Nullable<System.DateTime> expireDate { get; set; }
+        public string expireDate { get; set; }
         public Nullable<int> ccv { get; set; }
         public Nullable<System.DateTime> cutDate { get; set; }
         public Nullable<System.DateTime> paymentDueDate { get; set; }
