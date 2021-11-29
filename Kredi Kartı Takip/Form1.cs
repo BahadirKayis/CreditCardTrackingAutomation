@@ -61,6 +61,8 @@ namespace Kredi_Kartı_Takip
                 x += 20;
                 newButton.Size = new Size(100, 30);
                 newButton.Click += new EventHandler(button_Click);
+                newButton.FlatStyle = FlatStyle.Popup;
+                newButton.Font = new Font("Ravie", 10);
 
             }
 
@@ -69,6 +71,7 @@ namespace Kredi_Kartı_Takip
             double donemici = 0;
            
             dataGridView1.AutoGenerateColumns = true;
+            
 
             //Bu ay ödenecek tutar bilgileri
             DateTime dt_Ay_ilkGun = new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1); // Ayın ilk günü
@@ -106,8 +109,8 @@ namespace Kredi_Kartı_Takip
                         companyName = item.companyName,
                         productCategory = item.productCategory,
                         numberOfInstallments = Convert.ToInt32(item.numberOfInstallments),
-                        installmentAmount = Convert.ToInt32(item.installmentAmount)
-                    ,
+                        installmentAmount = Convert.ToInt32(item.installmentAmount),
+
                         aggregateAmount = Convert.ToDouble(item.aggregateAmount),
                         addDate = Convert.ToDateTime(item.addDate),
                         mailOrder = mail
@@ -123,8 +126,8 @@ namespace Kredi_Kartı_Takip
                 cardDate.Text = item.CreditCard.expireDate;
                 cardCCV.Text = Convert.ToString(item.CreditCard.ccv);
                 cardlimit.Text = item.CreditCard.balance;
-                cardekstrekesim.Text = Convert.ToString(item.CreditCard.cutDate);
-                cardlastpay.Text = Convert.ToString(item.CreditCard.paymentDueDate);
+                cardekstrekesim.Text = item.CreditCard.cutDate.ToString() ;
+                cardlastpay.Text = item.CreditCard.paymentDueDate.ToString();
 
                 ayiciharcama = +Convert.ToDouble(item.aggregateAmount);
                 //bu ay ödenecek tutar aslında geçen aaydan ödenecek tutar
@@ -214,8 +217,8 @@ namespace Kredi_Kartı_Takip
                 cardDate.Text = item.CreditCard.expireDate;
                 cardCCV.Text = Convert.ToString(item.CreditCard.ccv);
                 cardlimit.Text = item.CreditCard.balance;
-                cardekstrekesim.Text = Convert.ToString(item.CreditCard.cutDate);
-                cardlastpay.Text = Convert.ToString(item.CreditCard.paymentDueDate);
+                cardekstrekesim.Text = item.CreditCard.cutDate.ToString();
+                cardlastpay.Text = item.CreditCard.paymentDueDate.ToString();
 
                 ayiciharcama = +Convert.ToDouble(item.aggregateAmount);
                 //bu ay ödenecek tutar aslında geçen aaydan ödenecek tutar

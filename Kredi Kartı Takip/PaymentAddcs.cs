@@ -55,7 +55,19 @@ namespace Kredi_Kartı_Takip
 
         private void balance_TextChanged(object sender, EventArgs e)
         {
-           
+            if (balance.Text.Length==3)
+            {
+                balance.Text = balance.Text + ".";
+                balance.SelectionStart = balance.MaxLength;
+            } if (balance.Text.Length==7)
+            {
+                balance.Text = balance.Text + ".";
+                balance.SelectionStart = balance.MaxLength;
+            } if (balance.Text.Length==10)
+            {
+                balance.Text = balance.Text + ".";
+                balance.SelectionStart = balance.MaxLength;
+            }
         }
 
         private void PaymentAddcs_Load(object sender, EventArgs e)
@@ -90,6 +102,15 @@ namespace Kredi_Kartı_Takip
 
         private void expenseAdd_Click(object sender, EventArgs e)
         {
+
+            if (kartlar.SelectedText!="")
+            {
+                MessageBox.Show("Hangi Banka Olduğunu Seçiniz");
+            }
+            else if (firmatext.Text!=""&&alinanfirma.SelectedText!="")
+            {
+                MessageBox.Show("Hangi Banka Olduğunu Seçiniz");
+            }
             AddExpense neweExpense = new AddExpense();
             var kartid = db.CreditCard.Where(x => x.bankName == kartlar.Text).FirstOrDefault();
             neweExpense.cardId = kartid.id;
@@ -120,15 +141,15 @@ namespace Kredi_Kartı_Takip
 
             db.AddExpense.Add(neweExpense);
             db.SaveChanges();
-            foreach (Control c in Controls)
+            for (int i = 0; i < this.Controls.Count; i++)
             {
-                if (c is TextBox)
-                {
-                    c.Text = "";
-                }
+                this.Controls[i].ResetText();
             }
             MessageBox.Show("Harcama Eklendi");
 
+
+            alinanfirma.Visible = true;
+            firmatext.Visible = false;
 
         }
 
@@ -193,10 +214,12 @@ namespace Kredi_Kartı_Takip
 
         private void back_Click(object sender, EventArgs e)
         {
+            this.Refresh();
+          
             //Form1 form1 = new Form1();
             //form1.Show();
             //this.Hide();
-       
+
 
         }
   
