@@ -32,25 +32,61 @@ namespace Kredi_Kartı_Takip
 
         private void cardAdd_Click(object sender, EventArgs e)
         {
-            CreditCard newcard = new CreditCard();
-            newcard.bankName = bankName.Text.ToString();
-            newcard.nameSurname = nameSurname.Text.ToString();
-            newcard.number = number.Text.ToString();
-            newcard.expireDate = expireDate.Text.ToString();
-            newcard.ccv = Convert.ToInt32(ccv.Text.ToString());
-            newcard.cutDate = Convert.ToDateTime(cutDate.Text.ToString());
-            newcard.paymentDueDate = Convert.ToDateTime(paymentDueDate.Text.ToString());
-            newcard.balance = Convert.ToString(balance.Text.ToString());
-            db.CreditCard.Add(newcard);
-            db.SaveChanges();
-            foreach (Control c in Controls)
-            {       
-                if (c is TextBox)
-                {
-                    c.Text = "";
-                }
+            if (bankName.Text=="")
+            {
+                MessageBox.Show("Banka Alanını Doldurunuz");
             }
-            MessageBox.Show("Yeni Kart Eklendi");
+                else if (nameSurname.Text=="")
+            {
+                MessageBox.Show("İsim Alanını Doldurunuz");
+            }
+             else if (number.Text=="")
+            {
+                MessageBox.Show("Kart Numarasını Alanını Doldurunuz");
+            }   
+            else if (expireDate.Text=="")
+            {
+                MessageBox.Show("Kartın Son Kullanma Tarihi Alanını Doldurunuz");
+            } 
+            else if (ccv.Text=="")
+            {
+                MessageBox.Show("CCV Alanını Doldurunuz");
+            }
+             else if (balance.Text=="")
+            {
+                MessageBox.Show("Kart Bakiyesi Alanını Doldurunuz");
+            }
+            else
+            {
+
+                CreditCard newcard = new CreditCard();
+                newcard.bankName = bankName.Text.ToString();
+                newcard.nameSurname = nameSurname.Text.ToString();
+                newcard.number = number.Text.ToString();
+                newcard.expireDate = expireDate.Text.ToString();
+                newcard.ccv = Convert.ToInt32(ccv.Text.ToString());
+                newcard.cutDate = Convert.ToDateTime(cutDate.Text.ToString());
+                newcard.paymentDueDate = Convert.ToDateTime(paymentDueDate.Text.ToString());
+                newcard.balance = Convert.ToString(balance.Text.ToString());
+                db.CreditCard.Add(newcard);
+                db.SaveChanges();
+                foreach (Control c in Controls)
+                {
+                    if (c is TextBox)
+                    {
+                        c.Text = "";
+                    }
+                }
+                MessageBox.Show("Yeni Kart Eklendi");
+                bankName.Text = "";
+                nameSurname.Text = "";
+                bankName.Text = "";
+                number.Text = "";
+                expireDate.Text = "";
+                ccv.Text = "";
+                balance.Text = "";
+            }
+
         }
 
         private void balance_TextChanged(object sender, EventArgs e)
@@ -109,47 +145,65 @@ namespace Kredi_Kartı_Takip
             }
             else if (firmatext.Text!=""&&alinanfirma.SelectedText!="")
             {
-                MessageBox.Show("Hangi Banka Olduğunu Seçiniz");
+                MessageBox.Show("Hangi Firma Olduğunu Seçiniz veya Yazınız");
             }
-            AddExpense neweExpense = new AddExpense();
-            var kartid = db.CreditCard.Where(x => x.bankName == kartlar.Text).FirstOrDefault();
-            neweExpense.cardId = kartid.id;
-            if (alinanfirma.Text=="Diğer")
+               else if (numberOfIns.Text!="0"|| numberOfIns.Text != "")
             {
-                neweExpense.companyName = firmatext.Text.ToString(); ;
-
+                MessageBox.Show("Taksit Sayısı Giriniz ");
+            }
+            else if (insAmoun.Text!="0"|| insAmoun.Text != "")
+            {
+                MessageBox.Show("Taksit Sayısı Giriniz ");
             }
             else
             {
-                neweExpense.companyName = alinanfirma.Text.ToString();
+                AddExpense neweExpense = new AddExpense();
+                var kartid = db.CreditCard.Where(x => x.bankName == kartlar.Text).FirstOrDefault();
+                neweExpense.cardId = kartid.id;
+                if (alinanfirma.Text == "Diğer")
+                {
+                    neweExpense.companyName = firmatext.Text.ToString(); ;
+
+                }
+                else
+                {
+                    neweExpense.companyName = alinanfirma.Text.ToString();
+
+                }
+                neweExpense.productCategory = productCategory.Text.ToString();
+                neweExpense.numberOfInstallments = Convert.ToUInt16(numberOfIns.Text.ToString());
+                neweExpense.installmentAmount = insAmoun.Text.ToString();
+                neweExpense.aggregateAmount = aggreAmount.Text.ToString();
+                neweExpense.addDate = Convert.ToDateTime(addDate.Text.ToString());
+                // 0 ise mail order
+                if (checkBox1.Checked == true)
+                {
+                    neweExpense.mailOrder = 0;
+                }
+                else
+                {
+                    neweExpense.mailOrder = 1;
+                }
+
+                db.AddExpense.Add(neweExpense);
+                db.SaveChanges();
+                for (int i = 0; i < this.Controls.Count; i++)
+                {
+                    this.Controls[i].ResetText();
+                }
+                MessageBox.Show("Harcama Eklendi");
+
+
+                alinanfirma.Visible = true;
+                firmatext.Visible = false;
+                productCategory.Text = "";
+                numberOfIns.Text = "0";
+                insAmoun.Text = "0";
+                checkBox1.Checked = false;
 
             }
-            neweExpense.productCategory = productCategory.Text.ToString();
-            neweExpense.numberOfInstallments = Convert.ToUInt16(numberOfIns.Text.ToString());   
-            neweExpense.installmentAmount = insAmoun.Text.ToString();   
-            neweExpense.aggregateAmount = aggreAmount.Text.ToString();   
-            neweExpense.addDate = Convert.ToDateTime(addDate.Text.ToString());
-            // 0 ise mail order
-            if (checkBox1.Checked==true)
-            {
-                neweExpense.mailOrder = 0;
-            }
-            else
-            {
-                neweExpense.mailOrder = 1;
-            }
 
-            db.AddExpense.Add(neweExpense);
-            db.SaveChanges();
-            for (int i = 0; i < this.Controls.Count; i++)
-            {
-                this.Controls[i].ResetText();
-            }
-            MessageBox.Show("Harcama Eklendi");
-
-
-            alinanfirma.Visible = true;
-            firmatext.Visible = false;
+            
 
         }
 
@@ -176,20 +230,24 @@ namespace Kredi_Kartı_Takip
 
         private void insAmoun_TextChanged(object sender, EventArgs e)
         {
-            int taksit_sayisi = 0, taksit_tutarı = 0;
+            string taksit_sayisi = "0", taksit_tutarı = "0";
+          
             if (numberOfIns.Text.ToString() != "")
             {
-                taksit_sayisi = Convert.ToInt32(numberOfIns.Text.ToString());
+                taksit_sayisi = numberOfIns.Text.ToString();
 
             }
             if (insAmoun.Text.ToString() != "")
             {
-                taksit_tutarı = Convert.ToInt32(insAmoun.Text.ToString());
+                
+               taksit_tutarı =insAmoun.Text.ToString();
+                taksit_tutarı = taksit_tutarı.Replace(".",",");
 
             }
 
 
-            double toplam_tutar = taksit_sayisi * taksit_tutarı;
+
+            double toplam_tutar = Convert.ToDouble(taksit_sayisi) *Convert.ToDouble( taksit_tutarı);
 
             aggreAmount.Text = toplam_tutar.ToString();
         }
@@ -205,7 +263,7 @@ namespace Kredi_Kartı_Takip
             {
                 number.Text = number.Text+"-";
                 number.SelectionStart = number.MaxLength;
-            }if (number.Text.Length==13)
+            }if (number.Text.Length==14)
             {
                 number.Text = number.Text+"-";
                 number.SelectionStart = number.MaxLength;
@@ -214,14 +272,18 @@ namespace Kredi_Kartı_Takip
 
         private void back_Click(object sender, EventArgs e)
         {
-            this.Refresh();
-          
-            //Form1 form1 = new Form1();
-            //form1.Show();
-            //this.Hide();
+            
+
+            Form1 form1 = new Form1();
+            form1.Show();
+            this.Hide();
 
 
         }
-  
+
+        private void bankName_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

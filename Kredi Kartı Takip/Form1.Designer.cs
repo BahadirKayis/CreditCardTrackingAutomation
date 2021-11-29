@@ -70,7 +70,7 @@ namespace Kredi_Kartı_Takip
             this.groupBox2.Controls.Add(this.label3);
             this.groupBox2.Controls.Add(this.label2);
             this.groupBox2.Controls.Add(this.label1);
-            this.groupBox2.Location = new System.Drawing.Point(176, 12);
+            this.groupBox2.Location = new System.Drawing.Point(176, 99);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(638, 113);
             this.groupBox2.TabIndex = 1;
@@ -295,12 +295,13 @@ namespace Kredi_Kartı_Takip
             // 
             this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.button3.Location = new System.Drawing.Point(632, 564);
+            this.button3.Location = new System.Drawing.Point(606, 564);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(114, 32);
             this.button3.TabIndex = 5;
             this.button3.Text = "Harcama ekle";
             this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // label14
             // 
@@ -325,6 +326,7 @@ namespace Kredi_Kartı_Takip
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.ClientSize = new System.Drawing.Size(1267, 608);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.carddonem);
@@ -333,7 +335,9 @@ namespace Kredi_Kartı_Takip
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Form1";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.groupBox2.ResumeLayout(false);

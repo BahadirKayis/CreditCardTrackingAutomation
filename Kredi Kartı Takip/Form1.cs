@@ -48,22 +48,24 @@ namespace Kredi_Kartı_Takip
             cardButtonAdd();
 
             var creditcard = db.CreditCard.OrderByDescending(x => x.id).ToList();
+            
+            int xy = 60;
             foreach (var item in creditcard)
             {
-                int x = 60;
                 Button newButton = new Button();
-                this.Controls.Add(newButton);
 
+
+                this.Controls.Add(newButton);
                 newButton.Text = item.bankName;
-               
-                newButton.Location = new Point(49, x);
+                xy = xy + 50;
+                newButton.Location = new Point(49, xy);
                 newButton.Name = Convert.ToString(item.id);
-                x += 20;
+               
                 newButton.Size = new Size(100, 30);
                 newButton.Click += new EventHandler(button_Click);
                 newButton.FlatStyle = FlatStyle.Popup;
-                newButton.Font = new Font("Ravie", 10);
-
+                newButton.Font = new Font("Microsoft Tai Le", 10);
+              
             }
 
             double buayekstretopla = 0;
@@ -94,8 +96,22 @@ namespace Kredi_Kartı_Takip
                 int tarihekle = Convert.ToInt32(item.numberOfInstallments);
                 tarihhesap = tarihhesap.AddMonths(tarihekle);
                 //DateTime tarihkontrol = DateTime.Now.AddMonths(Convert.ToInt32(item.numberOfInstallments));
+
+
+                if (item.addDate >= dt_Ay_ilkGun && item.addDate <= dt_Ay_son)
+                {
+                    donemici = donemici + Convert.ToDouble(item.installmentAmount);
+
+
+
+                    decimal moneydonem = Convert.ToDecimal(donemici);
+
+                    string moneyFormatdonem = moneydonem.ToString("#,##0.00");
+                    carddonem.Text = moneyFormatdonem + "TL";
+                }
                 if (tarihhesap >= item.CreditCard.paymentDueDate)
                 {
+
 
                     string mail = "";
                     if (item.mailOrder == 0)
@@ -117,15 +133,30 @@ namespace Kredi_Kartı_Takip
                     };
                     verilist.Add(veriler);
                     buayekstretopla = buayekstretopla + Convert.ToDouble(item.installmentAmount);
-                    cardbuay.Text = Convert.ToString(buayekstretopla);
-                    kullanilabilir = Convert.ToDouble(item.CreditCard.balance) - buayekstretopla;
-                    cardKullnabilir.Text = Convert.ToString(kullanilabilir);
+
+                    decimal buay = Convert.ToDecimal(buayekstretopla);
+                    string moneyFormatbuay = buay.ToString("#,##0.00");
+                    cardbuay.Text = moneyFormatbuay + "TL";
+                   
+                  
+
+
+                    kullanılabilirbakiye = Convert.ToDouble(item.CreditCard.balance) - (buayekstretopla + donemici);
+                    decimal kullan = Convert.ToDecimal(kullanılabilirbakiye);
+
+                    string moneyFormatkullan = kullan.ToString("#,##0.00");
+                    cardKullnabilir.Text = moneyFormatkullan + " TL";
                 }
                 cardName.Text = item.CreditCard.nameSurname;
                 cardNumber.Text = item.CreditCard.number;
                 cardDate.Text = item.CreditCard.expireDate;
                 cardCCV.Text = Convert.ToString(item.CreditCard.ccv);
-                cardlimit.Text = item.CreditCard.balance;
+               
+                decimal money = Convert.ToDecimal(item.CreditCard.balance);
+
+                string moneyFormat = money.ToString("#,##0.00");
+                cardlimit.Text = moneyFormat + "TL";
+
                 cardekstrekesim.Text = item.CreditCard.cutDate.ToString() ;
                 cardlastpay.Text = item.CreditCard.paymentDueDate.ToString();
 
@@ -135,11 +166,7 @@ namespace Kredi_Kartı_Takip
                 //kullanılabilirbakiye=
                 //  cardlastpay.Text = Convert.ToString(item.CreditCard.paymentDueDate);
 
-                if (item.addDate >= dt_Ay_ilkGun && item.addDate <= dt_Ay_son)
-                {
-                    donemici = donemici + Convert.ToDouble(item.installmentAmount);
-                    carddonem.Text = donemici.ToString();
-                }
+
             }
 
 
@@ -175,7 +202,20 @@ namespace Kredi_Kartı_Takip
 
             List<Verigoster> verilist = new List<Verigoster>();
             int cardid = Convert.ToInt32(button.Name);
+
+            //KART BİLGİLERİNİ GETİR
+            var kartlarigetir = db.CreditCard.Where(x => x.id == cardid).FirstOrDefault();
+            decimal money = Convert.ToDecimal(kartlarigetir.balance);
+            string moneyFormat = money.ToString("#,##0.00");
+            cardlimit.Text = moneyFormat + " TL";
+            cardName.Text = kartlarigetir.nameSurname;
+            cardNumber.Text = kartlarigetir.number;
+            cardDate.Text = kartlarigetir.expireDate;
+            cardCCV.Text = Convert.ToString(kartlarigetir.ccv);
+
+            //
             //&&(x.addDate>= dt_Ay_ilkGun&&x.addDate<= dt_Ay_sonGun)
+            //HARCAMA VE HESAPLAMALARI YAP
             var bankkartları = db.AddExpense.Where(x => x.cardId == cardid).ToList();
             Verigoster veriler = new Verigoster();
             double ayiciharcama = 0,kullanılabilirbakiye=0;
@@ -185,6 +225,14 @@ namespace Kredi_Kartı_Takip
                 int tarihekle = Convert.ToInt32(item.numberOfInstallments);
                 tarihhesap= tarihhesap.AddMonths(tarihekle);
                 //DateTime tarihkontrol = DateTime.Now.AddMonths(Convert.ToInt32(item.numberOfInstallments));
+                if (item.addDate >= dt_Ay_ilkGun && item.addDate <= dt_Ay_son)
+                {
+                    donemici = donemici + Convert.ToDouble(item.installmentAmount);
+                    decimal moneydonem = Convert.ToDecimal(donemici);
+
+                    string moneyFormatdonem = moneydonem.ToString("#,##0.00");
+                    carddonem.Text = moneyFormatdonem + " TL";
+                }
                 if (tarihhesap >=item.CreditCard.paymentDueDate)
                 {
 
@@ -207,36 +255,49 @@ namespace Kredi_Kartı_Takip
                         mailOrder = mail
                     };
                     verilist.Add(veriler);
-                     buayekstretopla =buayekstretopla+Convert.ToDouble(item.installmentAmount);
-                    cardbuay.Text = Convert.ToString(buayekstretopla);
-                    kullanilabilir = Convert.ToDouble(item.CreditCard.balance) - buayekstretopla;
-                    cardKullnabilir.Text = Convert.ToString(kullanilabilir);
+
+                    buayekstretopla = buayekstretopla + Convert.ToDouble(item.installmentAmount);
+                    decimal buay = Convert.ToDecimal(buayekstretopla);
+                    string moneyFormatbuay = buay.ToString("#,##0.00");
+                    cardbuay.Text = moneyFormatbuay + " TL";
+
+
+                   
+
+                   
+                  
+                   
                 }
+
                 cardName.Text = item.CreditCard.nameSurname;
                 cardNumber.Text = item.CreditCard.number;
                 cardDate.Text = item.CreditCard.expireDate;
                 cardCCV.Text = Convert.ToString(item.CreditCard.ccv);
-                cardlimit.Text = item.CreditCard.balance;
+
+                 money = Convert.ToDecimal(item.CreditCard.balance);
+                 moneyFormat = money.ToString("#,##0.00");
+                cardlimit.Text = moneyFormat + " TL";
+
                 cardekstrekesim.Text = item.CreditCard.cutDate.ToString();
                 cardlastpay.Text = item.CreditCard.paymentDueDate.ToString();
 
-                ayiciharcama = +Convert.ToDouble(item.aggregateAmount);
+                //ayiciharcama = +Convert.ToDouble(item.aggregateAmount);
                 //bu ay ödenecek tutar aslında geçen aaydan ödenecek tutar
                 //dönem içi harcama bu ayın hacaası
                 //kullanılabilirbakiye=
                 //  cardlastpay.Text = Convert.ToString(item.CreditCard.paymentDueDate);
 
-                if (item.addDate>= dt_Ay_ilkGun&&item.addDate<= dt_Ay_son)
-                {
-                    donemici =donemici+Convert.ToDouble(item.installmentAmount);
-                    carddonem.Text = donemici.ToString() ;
-                }
+               
             }
 
+            kullanılabilirbakiye = Convert.ToDouble(kartlarigetir.balance) - (buayekstretopla + donemici);
+            decimal kullan = Convert.ToDecimal(kullanılabilirbakiye);
 
-          
-           
-           
+            string moneyFormatkullan = kullan.ToString("#,##0.00");
+            cardKullnabilir.Text = moneyFormatkullan + " TL";
+
+
+
             dataGridView1.DataSource = verilist.ToList();
 
           
@@ -247,11 +308,20 @@ namespace Kredi_Kartı_Takip
         private void button2_Click(object sender, EventArgs e)
         {
             PaymentAddcs payment = new PaymentAddcs();
-            
+            payment.groupBox1.Visible = false;
+            payment.groupBox2.Visible = true;
             payment.Show();
             this.Hide();
         }
 
-       
+        private void button3_Click(object sender, EventArgs e)
+        {
+            PaymentAddcs payment = new PaymentAddcs();
+            payment.groupBox1.Visible = true;
+            payment.groupBox2.Visible = false;
+            payment.Show();
+            this.Hide();
+        }
     }
+    
 }
