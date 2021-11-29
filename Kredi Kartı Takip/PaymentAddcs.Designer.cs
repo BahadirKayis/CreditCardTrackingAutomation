@@ -39,6 +39,7 @@ namespace Kredi_Kartı_Takip
             this.label5 = new System.Windows.Forms.Label();
             this.kartlar = new System.Windows.Forms.ComboBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.expenseAdd = new System.Windows.Forms.Button();
             this.addDate = new System.Windows.Forms.DateTimePicker();
             this.firmatext = new System.Windows.Forms.TextBox();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
@@ -64,7 +65,7 @@ namespace Kredi_Kartı_Takip
             this.label8 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.expenseAdd = new System.Windows.Forms.Button();
+            this.back = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
@@ -174,11 +175,21 @@ namespace Kredi_Kartı_Takip
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Harcama Ekle";
             // 
+            // expenseAdd
+            // 
+            this.expenseAdd.Location = new System.Drawing.Point(102, 416);
+            this.expenseAdd.Name = "expenseAdd";
+            this.expenseAdd.Size = new System.Drawing.Size(75, 23);
+            this.expenseAdd.TabIndex = 18;
+            this.expenseAdd.Text = "Ekle";
+            this.expenseAdd.UseVisualStyleBackColor = true;
+            this.expenseAdd.Click += new System.EventHandler(this.expenseAdd_Click);
+            // 
             // addDate
             // 
             this.addDate.Location = new System.Drawing.Point(86, 279);
             this.addDate.Name = "addDate";
-            this.addDate.Size = new System.Drawing.Size(119, 20);
+            this.addDate.Size = new System.Drawing.Size(149, 20);
             this.addDate.TabIndex = 17;
             // 
             // firmatext
@@ -201,7 +212,7 @@ namespace Kredi_Kartı_Takip
             // 
             // productCategory
             // 
-            this.productCategory.Location = new System.Drawing.Point(84, 107);
+            this.productCategory.Location = new System.Drawing.Point(84, 111);
             this.productCategory.Name = "productCategory";
             this.productCategory.Size = new System.Drawing.Size(121, 20);
             this.productCategory.TabIndex = 14;
@@ -327,6 +338,7 @@ namespace Kredi_Kartı_Takip
             this.number.Name = "number";
             this.number.Size = new System.Drawing.Size(121, 20);
             this.number.TabIndex = 16;
+            this.number.TextChanged += new System.EventHandler(this.number_TextChanged);
             // 
             // nameSurname
             // 
@@ -407,21 +419,22 @@ namespace Kredi_Kartı_Takip
             this.label6.TabIndex = 0;
             this.label6.Text = "Kart Üzerindeki İsim";
             // 
-            // expenseAdd
+            // back
             // 
-            this.expenseAdd.Location = new System.Drawing.Point(102, 416);
-            this.expenseAdd.Name = "expenseAdd";
-            this.expenseAdd.Size = new System.Drawing.Size(75, 23);
-            this.expenseAdd.TabIndex = 18;
-            this.expenseAdd.Text = "Ekle";
-            this.expenseAdd.UseVisualStyleBackColor = true;
-            this.expenseAdd.Click += new System.EventHandler(this.expenseAdd_Click);
+            this.back.Location = new System.Drawing.Point(503, 489);
+            this.back.Name = "back";
+            this.back.Size = new System.Drawing.Size(75, 23);
+            this.back.TabIndex = 12;
+            this.back.Text = "Geri";
+            this.back.UseVisualStyleBackColor = true;
+            this.back.Click += new System.EventHandler(this.back_Click);
             // 
             // PaymentAddcs
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1092, 557);
+            this.Controls.Add(this.back);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Name = "PaymentAddcs";
@@ -473,5 +486,6 @@ namespace Kredi_Kartı_Takip
         private System.Windows.Forms.TextBox firmatext;
         private System.Windows.Forms.DateTimePicker addDate;
         private System.Windows.Forms.Button expenseAdd;
+        private System.Windows.Forms.Button back;
     }
 }

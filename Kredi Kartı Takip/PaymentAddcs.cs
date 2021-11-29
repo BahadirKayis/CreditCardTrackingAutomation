@@ -44,7 +44,7 @@ namespace Kredi_Kartı_Takip
             db.CreditCard.Add(newcard);
             db.SaveChanges();
             foreach (Control c in Controls)
-            {
+            {       
                 if (c is TextBox)
                 {
                     c.Text = "";
@@ -172,5 +172,33 @@ namespace Kredi_Kartı_Takip
 
             aggreAmount.Text = toplam_tutar.ToString();
         }
+
+        private void number_TextChanged(object sender, EventArgs e)
+        {
+           
+            if (number.Text.Length==4)
+            {
+                number.Text = number.Text+"-";
+                number.SelectionStart = number.MaxLength;
+            }  if (number.Text.Length==9)
+            {
+                number.Text = number.Text+"-";
+                number.SelectionStart = number.MaxLength;
+            }if (number.Text.Length==13)
+            {
+                number.Text = number.Text+"-";
+                number.SelectionStart = number.MaxLength;
+            }
+        }
+
+        private void back_Click(object sender, EventArgs e)
+        {
+            //Form1 form1 = new Form1();
+            //form1.Show();
+            //this.Hide();
+       
+
+        }
+  
     }
 }

@@ -49,6 +49,11 @@ namespace Kredi_Kartı_Takip
             this.button3 = new System.Windows.Forms.Button();
             this.label14 = new System.Windows.Forms.Label();
             this.carddonem = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -64,7 +69,7 @@ namespace Kredi_Kartı_Takip
             this.groupBox2.Controls.Add(this.label3);
             this.groupBox2.Controls.Add(this.label2);
             this.groupBox2.Controls.Add(this.label1);
-            this.groupBox2.Location = new System.Drawing.Point(291, 12);
+            this.groupBox2.Location = new System.Drawing.Point(245, 12);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(569, 113);
             this.groupBox2.TabIndex = 1;
@@ -145,6 +150,11 @@ namespace Kredi_Kartı_Takip
             // 
             // groupBox3
             // 
+            this.groupBox3.Controls.Add(this.label9);
+            this.groupBox3.Controls.Add(this.label8);
+            this.groupBox3.Controls.Add(this.label7);
+            this.groupBox3.Controls.Add(this.label6);
+            this.groupBox3.Controls.Add(this.label5);
             this.groupBox3.Controls.Add(this.cardlastpay);
             this.groupBox3.Controls.Add(this.cardekstrekesim);
             this.groupBox3.Controls.Add(this.cardbuay);
@@ -152,7 +162,7 @@ namespace Kredi_Kartı_Takip
             this.groupBox3.Controls.Add(this.cardlimit);
             this.groupBox3.Location = new System.Drawing.Point(866, 12);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(206, 184);
+            this.groupBox3.Size = new System.Drawing.Size(229, 200);
             this.groupBox3.TabIndex = 2;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Bakiye Bilgileri";
@@ -160,47 +170,47 @@ namespace Kredi_Kartı_Takip
             // cardlastpay
             // 
             this.cardlastpay.AutoSize = true;
-            this.cardlastpay.Location = new System.Drawing.Point(6, 157);
+            this.cardlastpay.Location = new System.Drawing.Point(178, 168);
             this.cardlastpay.Name = "cardlastpay";
-            this.cardlastpay.Size = new System.Drawing.Size(84, 13);
+            this.cardlastpay.Size = new System.Drawing.Size(22, 13);
             this.cardlastpay.TabIndex = 4;
-            this.cardlastpay.Text = "son ödeme tarihi";
+            this.cardlastpay.Text = "xxx";
             // 
             // cardekstrekesim
             // 
             this.cardekstrekesim.AutoSize = true;
-            this.cardekstrekesim.Location = new System.Drawing.Point(6, 128);
+            this.cardekstrekesim.Location = new System.Drawing.Point(178, 135);
             this.cardekstrekesim.Name = "cardekstrekesim";
-            this.cardekstrekesim.Size = new System.Drawing.Size(87, 13);
+            this.cardekstrekesim.Size = new System.Drawing.Size(22, 13);
             this.cardekstrekesim.TabIndex = 3;
-            this.cardekstrekesim.Text = "Ekstre Kesim elle";
+            this.cardekstrekesim.Text = "xxx";
             // 
             // cardbuay
             // 
             this.cardbuay.AutoSize = true;
-            this.cardbuay.Location = new System.Drawing.Point(6, 100);
+            this.cardbuay.Location = new System.Drawing.Point(178, 100);
             this.cardbuay.Name = "cardbuay";
-            this.cardbuay.Size = new System.Drawing.Size(109, 13);
+            this.cardbuay.Size = new System.Drawing.Size(22, 13);
             this.cardbuay.TabIndex = 2;
-            this.cardbuay.Text = "Bu ay ödenecek tutar";
+            this.cardbuay.Text = "xxx";
             // 
             // cardKullnabilir
             // 
             this.cardKullnabilir.AutoSize = true;
-            this.cardKullnabilir.Location = new System.Drawing.Point(6, 62);
+            this.cardKullnabilir.Location = new System.Drawing.Point(178, 62);
             this.cardKullnabilir.Name = "cardKullnabilir";
-            this.cardKullnabilir.Size = new System.Drawing.Size(96, 13);
+            this.cardKullnabilir.Size = new System.Drawing.Size(22, 13);
             this.cardKullnabilir.TabIndex = 1;
-            this.cardKullnabilir.Text = "Kullanılabilir Bakiye";
+            this.cardKullnabilir.Text = "xxx";
             // 
             // cardlimit
             // 
             this.cardlimit.AutoSize = true;
-            this.cardlimit.Location = new System.Drawing.Point(6, 29);
+            this.cardlimit.Location = new System.Drawing.Point(178, 29);
             this.cardlimit.Name = "cardlimit";
-            this.cardlimit.Size = new System.Drawing.Size(52, 13);
+            this.cardlimit.Size = new System.Drawing.Size(22, 13);
             this.cardlimit.TabIndex = 0;
-            this.cardlimit.Text = "Kart Limiti";
+            this.cardlimit.Text = "xxx";
             // 
             // dataGridView1
             // 
@@ -233,7 +243,7 @@ namespace Kredi_Kartı_Takip
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(1078, 12);
+            this.label14.Location = new System.Drawing.Point(1124, 9);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(129, 13);
             this.label14.TabIndex = 6;
@@ -242,11 +252,56 @@ namespace Kredi_Kartı_Takip
             // carddonem
             // 
             this.carddonem.AutoSize = true;
-            this.carddonem.Location = new System.Drawing.Point(1112, 41);
+            this.carddonem.Location = new System.Drawing.Point(1158, 38);
             this.carddonem.Name = "carddonem";
             this.carddonem.Size = new System.Drawing.Size(67, 13);
             this.carddonem.TabIndex = 7;
             this.carddonem.Text = "100.000.000";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(6, 29);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(52, 13);
+            this.label5.TabIndex = 5;
+            this.label5.Text = "Kart Limiti";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(6, 62);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(100, 13);
+            this.label6.TabIndex = 6;
+            this.label6.Text = "Kullanıla Bilir Bakiye";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(6, 100);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(116, 13);
+            this.label7.TabIndex = 7;
+            this.label7.Text = "Bu Ay Ödenecek Tutar";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(6, 135);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(97, 13);
+            this.label8.TabIndex = 8;
+            this.label8.Text = "Ekstre Kesim Tarihi";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(6, 168);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(86, 13);
+            this.label9.TabIndex = 9;
+            this.label9.Text = "Son Kesim Tarihi";
             // 
             // Form1
             // 
@@ -294,6 +349,11 @@ namespace Kredi_Kartı_Takip
         private System.Windows.Forms.Label cardlimit;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label carddonem;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label label7;
     }
 }
 
