@@ -21,11 +21,7 @@ namespace Kredi_Kartı_Takip
         {
             InitializeComponent();
         }
-        void paymentShow()
-        {
-            var count = db.CreditCard.OrderBy(x => x.id).ToList();
-            MessageBox.Show(count.Count().ToString());
-        }
+       
         void cardButtonAdd() {
            
           
@@ -42,9 +38,8 @@ namespace Kredi_Kartı_Takip
         }
         private void Form1_Load(object sender, EventArgs e)
         {
-            // TODO: Bu kod satırı 'creditCardTrackingDataSet.CreditCard' tablosuna veri yükler. Bunu gerektiği şekilde taşıyabilir, veya kaldırabilirsiniz.
-         
-            paymentShow();
+            
+
             cardButtonAdd();
 
             var creditcard = db.CreditCard.OrderByDescending(x => x.id).ToList();
@@ -189,7 +184,8 @@ namespace Kredi_Kartı_Takip
             double kullanilabilir = 0;
             double donemici = 0;
             Button button = sender as Button;
-            dataGridView1.AutoGenerateColumns = true;
+            //dataGridView1.AutoGenerateColumns = false;  
+       
            
             //Bu ay ödenecek tutar bilgileri
             DateTime dt_Ay_ilkGun = new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1); // Ayın ilk günü
@@ -297,10 +293,12 @@ namespace Kredi_Kartı_Takip
             cardKullnabilir.Text = moneyFormatkullan + " TL";
 
 
-
             dataGridView1.DataSource = verilist.ToList();
 
-          
+            
+           
+
+
             // identify which button was clicked and perform necessary actions
         }
 
@@ -322,6 +320,13 @@ namespace Kredi_Kartı_Takip
             payment.Show();
             this.Hide();
         }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+     
     }
     
 }

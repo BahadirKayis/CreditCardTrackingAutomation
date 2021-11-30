@@ -29,6 +29,7 @@ namespace Kredi_Kartı_Takip
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.cardCCV = new System.Windows.Forms.Label();
             this.cardDate = new System.Windows.Forms.Label();
@@ -54,9 +55,33 @@ namespace Kredi_Kartı_Takip
             this.button3 = new System.Windows.Forms.Button();
             this.label14 = new System.Windows.Forms.Label();
             this.carddonem = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
+            this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.bankName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.companyName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.productCategory = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.numberOfInstallments = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.installmentAmount = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.aggregateAmount = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.addDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.mailOrder = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.creditCardTrackingDataSet = new Kredi_Kartı_Takip.CreditCardTrackingDataSet();
+            this.creditCardBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.creditCardTableAdapter = new Kredi_Kartı_Takip.CreditCardTrackingDataSetTableAdapters.CreditCardTableAdapter();
+            this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.bankNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nameSurnameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.numberDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.expireDateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ccvDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cutDateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.paymentDueDateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.balanceDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.creditCardTrackingDataSet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.creditCardBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox2
@@ -70,7 +95,7 @@ namespace Kredi_Kartı_Takip
             this.groupBox2.Controls.Add(this.label3);
             this.groupBox2.Controls.Add(this.label2);
             this.groupBox2.Controls.Add(this.label1);
-            this.groupBox2.Location = new System.Drawing.Point(176, 99);
+            this.groupBox2.Location = new System.Drawing.Point(160, 12);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(638, 113);
             this.groupBox2.TabIndex = 1;
@@ -165,7 +190,7 @@ namespace Kredi_Kartı_Takip
             this.groupBox3.Controls.Add(this.cardbuay);
             this.groupBox3.Controls.Add(this.cardKullnabilir);
             this.groupBox3.Controls.Add(this.cardlimit);
-            this.groupBox3.Location = new System.Drawing.Point(820, 12);
+            this.groupBox3.Location = new System.Drawing.Point(804, 12);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(298, 200);
             this.groupBox3.TabIndex = 2;
@@ -270,11 +295,32 @@ namespace Kredi_Kartı_Takip
             // dataGridView1
             // 
             this.dataGridView1.AllowUserToOrderColumns = true;
+            this.dataGridView1.AutoGenerateColumns = false;
             this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.Control;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(176, 218);
+            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.id,
+            this.bankName,
+            this.companyName,
+            this.productCategory,
+            this.numberOfInstallments,
+            this.installmentAmount,
+            this.aggregateAmount,
+            this.addDate,
+            this.mailOrder,
+            this.idDataGridViewTextBoxColumn,
+            this.bankNameDataGridViewTextBoxColumn,
+            this.nameSurnameDataGridViewTextBoxColumn,
+            this.numberDataGridViewTextBoxColumn,
+            this.expireDateDataGridViewTextBoxColumn,
+            this.ccvDataGridViewTextBoxColumn,
+            this.cutDateDataGridViewTextBoxColumn,
+            this.paymentDueDateDataGridViewTextBoxColumn,
+            this.balanceDataGridViewTextBoxColumn});
+            this.dataGridView1.DataSource = this.creditCardBindingSource;
+            this.dataGridView1.Location = new System.Drawing.Point(160, 258);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(976, 330);
+            this.dataGridView1.Size = new System.Drawing.Size(951, 330);
             this.dataGridView1.TabIndex = 3;
             // 
             // button2
@@ -283,7 +329,7 @@ namespace Kredi_Kartı_Takip
             this.button2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.button2.Location = new System.Drawing.Point(480, 564);
+            this.button2.Location = new System.Drawing.Point(479, 610);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(75, 32);
             this.button2.TabIndex = 4;
@@ -295,7 +341,7 @@ namespace Kredi_Kartı_Takip
             // 
             this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.button3.Location = new System.Drawing.Point(606, 564);
+            this.button3.Location = new System.Drawing.Point(632, 610);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(114, 32);
             this.button3.TabIndex = 5;
@@ -306,7 +352,7 @@ namespace Kredi_Kartı_Takip
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(1124, 9);
+            this.label14.Location = new System.Drawing.Point(1102, 12);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(129, 13);
             this.label14.TabIndex = 6;
@@ -316,18 +362,147 @@ namespace Kredi_Kartı_Takip
             // 
             this.carddonem.AutoSize = true;
             this.carddonem.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.carddonem.Location = new System.Drawing.Point(1151, 38);
+            this.carddonem.Location = new System.Drawing.Point(1129, 41);
             this.carddonem.Name = "carddonem";
             this.carddonem.Size = new System.Drawing.Size(88, 16);
             this.carddonem.TabIndex = 7;
             this.carddonem.Text = "100.000.000";
+            // 
+            // button1
+            // 
+            this.button1.AutoEllipsis = true;
+            this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.button1.Image = global::Kredi_Kartı_Takip.Properties.Resources.removee;
+            this.button1.Location = new System.Drawing.Point(1259, 3);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(28, 25);
+            this.button1.TabIndex = 8;
+            this.button1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click_1);
+            // 
+            // id
+            // 
+            this.id.HeaderText = "ID";
+            this.id.Name = "id";
+            // 
+            // bankName
+            // 
+            this.bankName.HeaderText = "Kart Adı";
+            this.bankName.Name = "bankName";
+            // 
+            // companyName
+            // 
+            this.companyName.HeaderText = "Alınan Şirket Adı";
+            this.companyName.Name = "companyName";
+            // 
+            // productCategory
+            // 
+            this.productCategory.HeaderText = "Alınan Kategori";
+            this.productCategory.Name = "productCategory";
+            // 
+            // numberOfInstallments
+            // 
+            this.numberOfInstallments.HeaderText = "Taksit Sayısı";
+            this.numberOfInstallments.Name = "numberOfInstallments";
+            // 
+            // installmentAmount
+            // 
+            this.installmentAmount.HeaderText = "Taksit Tutarı";
+            this.installmentAmount.Name = "installmentAmount";
+            // 
+            // aggregateAmount
+            // 
+            this.aggregateAmount.HeaderText = "Toplam Tutar";
+            this.aggregateAmount.Name = "aggregateAmount";
+            // 
+            // addDate
+            // 
+            this.addDate.HeaderText = "Alınan Tarih";
+            this.addDate.Name = "addDate";
+            // 
+            // mailOrder
+            // 
+            this.mailOrder.HeaderText = "Mail Order";
+            this.mailOrder.Name = "mailOrder";
+            // 
+            // creditCardTrackingDataSet
+            // 
+            this.creditCardTrackingDataSet.DataSetName = "CreditCardTrackingDataSet";
+            this.creditCardTrackingDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // creditCardBindingSource
+            // 
+            this.creditCardBindingSource.DataMember = "CreditCard";
+            this.creditCardBindingSource.DataSource = this.creditCardTrackingDataSet;
+            // 
+            // creditCardTableAdapter
+            // 
+            this.creditCardTableAdapter.ClearBeforeFill = true;
+            // 
+            // idDataGridViewTextBoxColumn
+            // 
+            this.idDataGridViewTextBoxColumn.DataPropertyName = "id";
+            this.idDataGridViewTextBoxColumn.HeaderText = "id";
+            this.idDataGridViewTextBoxColumn.Name = "idDataGridViewTextBoxColumn";
+            this.idDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // bankNameDataGridViewTextBoxColumn
+            // 
+            this.bankNameDataGridViewTextBoxColumn.DataPropertyName = "bankName";
+            this.bankNameDataGridViewTextBoxColumn.HeaderText = "bankName";
+            this.bankNameDataGridViewTextBoxColumn.Name = "bankNameDataGridViewTextBoxColumn";
+            // 
+            // nameSurnameDataGridViewTextBoxColumn
+            // 
+            this.nameSurnameDataGridViewTextBoxColumn.DataPropertyName = "nameSurname";
+            this.nameSurnameDataGridViewTextBoxColumn.HeaderText = "nameSurname";
+            this.nameSurnameDataGridViewTextBoxColumn.Name = "nameSurnameDataGridViewTextBoxColumn";
+            // 
+            // numberDataGridViewTextBoxColumn
+            // 
+            this.numberDataGridViewTextBoxColumn.DataPropertyName = "number";
+            this.numberDataGridViewTextBoxColumn.HeaderText = "number";
+            this.numberDataGridViewTextBoxColumn.Name = "numberDataGridViewTextBoxColumn";
+            // 
+            // expireDateDataGridViewTextBoxColumn
+            // 
+            this.expireDateDataGridViewTextBoxColumn.DataPropertyName = "expireDate";
+            this.expireDateDataGridViewTextBoxColumn.HeaderText = "expireDate";
+            this.expireDateDataGridViewTextBoxColumn.Name = "expireDateDataGridViewTextBoxColumn";
+            // 
+            // ccvDataGridViewTextBoxColumn
+            // 
+            this.ccvDataGridViewTextBoxColumn.DataPropertyName = "ccv";
+            this.ccvDataGridViewTextBoxColumn.HeaderText = "ccv";
+            this.ccvDataGridViewTextBoxColumn.Name = "ccvDataGridViewTextBoxColumn";
+            // 
+            // cutDateDataGridViewTextBoxColumn
+            // 
+            this.cutDateDataGridViewTextBoxColumn.DataPropertyName = "cutDate";
+            this.cutDateDataGridViewTextBoxColumn.HeaderText = "cutDate";
+            this.cutDateDataGridViewTextBoxColumn.Name = "cutDateDataGridViewTextBoxColumn";
+            // 
+            // paymentDueDateDataGridViewTextBoxColumn
+            // 
+            this.paymentDueDateDataGridViewTextBoxColumn.DataPropertyName = "paymentDueDate";
+            this.paymentDueDateDataGridViewTextBoxColumn.HeaderText = "paymentDueDate";
+            this.paymentDueDateDataGridViewTextBoxColumn.Name = "paymentDueDateDataGridViewTextBoxColumn";
+            // 
+            // balanceDataGridViewTextBoxColumn
+            // 
+            this.balanceDataGridViewTextBoxColumn.DataPropertyName = "balance";
+            this.balanceDataGridViewTextBoxColumn.HeaderText = "balance";
+            this.balanceDataGridViewTextBoxColumn.Name = "balanceDataGridViewTextBoxColumn";
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.ClientSize = new System.Drawing.Size(1267, 608);
+            this.ClientSize = new System.Drawing.Size(1290, 681);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.carddonem);
             this.Controls.Add(this.label14);
@@ -345,6 +520,8 @@ namespace Kredi_Kartı_Takip
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.creditCardTrackingDataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.creditCardBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -376,6 +553,28 @@ namespace Kredi_Kartı_Takip
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn id;
+        private System.Windows.Forms.DataGridViewTextBoxColumn bankName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn companyName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn productCategory;
+        private System.Windows.Forms.DataGridViewTextBoxColumn numberOfInstallments;
+        private System.Windows.Forms.DataGridViewTextBoxColumn installmentAmount;
+        private System.Windows.Forms.DataGridViewTextBoxColumn aggregateAmount;
+        private System.Windows.Forms.DataGridViewTextBoxColumn addDate;
+        private System.Windows.Forms.DataGridViewTextBoxColumn mailOrder;
+        private CreditCardTrackingDataSet creditCardTrackingDataSet;
+        private System.Windows.Forms.BindingSource creditCardBindingSource;
+        private CreditCardTrackingDataSetTableAdapters.CreditCardTableAdapter creditCardTableAdapter;
+        private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn bankNameDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn nameSurnameDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn numberDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn expireDateDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ccvDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cutDateDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn paymentDueDateDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn balanceDataGridViewTextBoxColumn;
     }
 }
 

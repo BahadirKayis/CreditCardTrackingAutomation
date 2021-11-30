@@ -91,19 +91,8 @@ namespace Kredi_Kartı_Takip
 
         private void balance_TextChanged(object sender, EventArgs e)
         {
-            if (balance.Text.Length==3)
-            {
-                balance.Text = balance.Text + ".";
-                balance.SelectionStart = balance.MaxLength;
-            } if (balance.Text.Length==7)
-            {
-                balance.Text = balance.Text + ".";
-                balance.SelectionStart = balance.MaxLength;
-            } if (balance.Text.Length==10)
-            {
-                balance.Text = balance.Text + ".";
-                balance.SelectionStart = balance.MaxLength;
-            }
+
+            
         }
 
         private void PaymentAddcs_Load(object sender, EventArgs e)
@@ -114,6 +103,7 @@ namespace Kredi_Kartı_Takip
             foreach (var item in creditcard)
             {
                 kartlar.Items.Add(item.bankName);
+                editkart.Items.Add(item.bankName);
             }
             aggreAmount.ReadOnly = true;
 
@@ -249,7 +239,13 @@ namespace Kredi_Kartı_Takip
 
             double toplam_tutar = Convert.ToDouble(taksit_sayisi) *Convert.ToDouble( taksit_tutarı);
 
-            aggreAmount.Text = toplam_tutar.ToString();
+            //aggreAmount.Text = toplam_tutar.ToString();
+
+          
+            decimal moneydonem = Convert.ToDecimal(toplam_tutar);
+
+            string moneyFormatdonem = moneydonem.ToString("#,##0.00");
+            aggreAmount.Text = moneyFormatdonem + " TL";
         }
 
         private void number_TextChanged(object sender, EventArgs e)
@@ -283,6 +279,47 @@ namespace Kredi_Kartı_Takip
 
         private void bankName_TextChanged(object sender, EventArgs e)
         {
+
+        }
+
+        private void aggreAmount_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void editbutton_Click(object sender, EventArgs e)
+        {
+            var kartid = db.CreditCard.Where(x => x.bankName == editkart.Text).FirstOrDefault();
+            CreditCard car = new CreditCard();
+            kartid.nameSurname = editkartname.Text.ToString();
+            kartid.number = editcardnumber.Text.ToString();
+            kartid.expireDate = editenddate.Text;
+            kartid.ccv =Convert.ToInt32(editccv.Text);
+            kartid.cutDate =Convert.ToDateTime(editekstre.Text.ToString());
+            kartid.paymentDueDate = Convert.ToDateTime(editekstreson.Text.ToString());
+            kartid.balance = editkartlimit.Text.ToString();
+            db.SaveChanges();
+            MessageBox.Show("Kart Bilgileri Düzenlendi");
+            
+        }
+
+        private void editkart_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            var kartid = db.CreditCard.Where(x => x.bankName == editkart.Text).FirstOrDefault();
+
+            CreditCard editcard = new CreditCard();
+            editkartname.Text = kartid.nameSurname;
+            editcardnumber.Text = kartid.number;
+            editenddate.Text = kartid.expireDate;
+            editccv.Text = kartid.ccv.ToString();
+            editekstre.Value= Convert.ToDateTime(kartid.cutDate);
+            editekstreson.Value= Convert.ToDateTime(kartid.paymentDueDate);
+            editkartlimit.Text= kartid.balance.ToString();
 
         }
     }
