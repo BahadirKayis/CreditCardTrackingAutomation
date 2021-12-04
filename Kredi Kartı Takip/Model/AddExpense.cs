@@ -17,6 +17,7 @@ namespace Kredi_Kartı_Takip.Model
         public int id { get; set; }
         public Nullable<int> cardId { get; set; }
         public string companyName { get; set; }
+        public string explanationCompany { get; set; }
         public string productCategory { get; set; }
         public Nullable<int> numberOfInstallments { get; set; }
         public string installmentAmount { get; set; }

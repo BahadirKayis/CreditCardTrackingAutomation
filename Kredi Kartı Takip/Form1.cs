@@ -20,27 +20,30 @@ namespace Kredi_Kartı_Takip
         public Form1()
         {
             InitializeComponent();
-        }
-       
-        void cardButtonAdd() {
-           
-          
-
-          
-
-
-            //string tablecount = string.Format("SELECT COUNT(*) FROM {0}", table);
-
-         
-        
-            
 
         }
+        public const int WM_NCLBUTTONDOWN = 0xA1;
+        public const int HT_CAPTION = 0x2;
+
+        [System.Runtime.InteropServices.DllImport("user32.dll")]
+        public static extern int SendMessage(IntPtr hWnd, int Msg, int wParam, int lParam);
+        [System.Runtime.InteropServices.DllImport("user32.dll")]
+        public static extern bool ReleaseCapture();
+
+        private void Form1_MouseDown(object sender, System.Windows.Forms.MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                ReleaseCapture();
+                SendMessage(Handle, WM_NCLBUTTONDOWN, HT_CAPTION, 0);
+            }
+        }
+
         private void Form1_Load(object sender, EventArgs e)
         {
             
 
-            cardButtonAdd();
+            
 
             var creditcard = db.CreditCard.OrderByDescending(x => x.id).ToList();
             
@@ -69,7 +72,6 @@ namespace Kredi_Kartı_Takip
            
             dataGridView1.AutoGenerateColumns = true;
             
-
             //Bu ay ödenecek tutar bilgileri
             DateTime dt_Ay_ilkGun = new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1); // Ayın ilk günü
             DateTime dt_Ay_sonGun1 = dt_Ay_ilkGun.AddMonths(-1);// önceki ayın ilk günü 
@@ -124,7 +126,9 @@ namespace Kredi_Kartı_Takip
 
                         aggregateAmount = Convert.ToDouble(item.aggregateAmount),
                         addDate = Convert.ToDateTime(item.addDate),
-                        mailOrder = mail
+                        mailOrder = mail,
+                        explantationCompany = item.explanationCompany
+                        
                     };
                     verilist.Add(veriler);
                     buayekstretopla = buayekstretopla + Convert.ToDouble(item.installmentAmount);
@@ -169,6 +173,18 @@ namespace Kredi_Kartı_Takip
 
 
             dataGridView1.DataSource = verilist.ToList();
+            dataGridView1.Columns[0].HeaderText = "Sıra";
+            dataGridView1.Columns[2].HeaderText = "Alınan Firma";
+            dataGridView1.Columns[1].HeaderText = "Alınan Şirket";
+            dataGridView1.Columns[3].HeaderText = "Kart Adı";
+            dataGridView1.Columns[4].HeaderText = "Kategori";
+            dataGridView1.Columns[5].HeaderText = "Taksit Sayısı";
+            dataGridView1.Columns[6].HeaderText = "Taksit Tutarı";
+            dataGridView1.Columns[7].HeaderText = "Toplam Tutar";
+            dataGridView1.Columns[8].HeaderText = "Eklenme Tarihi";
+            dataGridView1.Columns[9].HeaderText = "Mail Order";
+            
+
 
 
             // identify which button was clicked and perform necessary actions
@@ -248,7 +264,8 @@ namespace Kredi_Kartı_Takip
                     ,
                         aggregateAmount = Convert.ToDouble(item.aggregateAmount),
                         addDate = Convert.ToDateTime(item.addDate),
-                        mailOrder = mail
+                        mailOrder = mail,
+                        explantationCompany = item.explanationCompany
                     };
                     verilist.Add(veriler);
 
@@ -293,10 +310,20 @@ namespace Kredi_Kartı_Takip
             cardKullnabilir.Text = moneyFormatkullan + " TL";
 
 
+    
             dataGridView1.DataSource = verilist.ToList();
+            dataGridView1.Columns[0].HeaderText = "Sıra";
+            dataGridView1.Columns[2].HeaderText = "Alınan Firma";
+            dataGridView1.Columns[1].HeaderText = "Alınan Şirket";
+            dataGridView1.Columns[3].HeaderText = "Kart Adı";
+            dataGridView1.Columns[4].HeaderText = "Kategori";
+            dataGridView1.Columns[5].HeaderText = "Taksit Sayısı";
+            dataGridView1.Columns[6].HeaderText = "Taksit Tutarı";
+            dataGridView1.Columns[7].HeaderText = "Toplam Tutar";
+            dataGridView1.Columns[8].HeaderText = "Eklenme Tarihi";
+            dataGridView1.Columns[9].HeaderText = "Mail Order";
 
-            
-           
+
 
 
             // identify which button was clicked and perform necessary actions
@@ -326,7 +353,160 @@ namespace Kredi_Kartı_Takip
             Application.Exit();
         }
 
-     
+        private void button4_Click(object sender, EventArgs e)
+        {
+
+
+            var creditcard = db.CreditCard.OrderByDescending(x => x.id).ToList();
+
+            int xy = 60;
+            foreach (var item in creditcard)
+            {
+                Button newButton = new Button();
+
+
+                this.Controls.Add(newButton);
+                newButton.Text = item.bankName;
+                xy = xy + 50;
+                newButton.Location = new Point(49, xy);
+                newButton.Name = Convert.ToString(item.id);
+
+                newButton.Size = new Size(100, 30);
+                newButton.Click += new EventHandler(button_Click);
+                newButton.FlatStyle = FlatStyle.Popup;
+                newButton.Font = new Font("Microsoft Tai Le", 10);
+
+            }
+
+            double buayekstretopla = 0;
+            double kullanilabilir = 0;
+            double donemici = 0;
+
+            dataGridView1.AutoGenerateColumns = true;
+
+            //Bu ay ödenecek tutar bilgileri
+            DateTime dt_Ay_ilkGun = new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1); // Ayın ilk günü
+            DateTime dt_Ay_sonGun1 = dt_Ay_ilkGun.AddMonths(-1);// önceki ayın ilk günü 
+            DateTime dt_Ay_sonGun = dt_Ay_ilkGun.AddMonths(-1).AddDays(-1);// önceki ayın son günü
+            DateTime dt_Ay_ekstresongn = dt_Ay_ilkGun.AddMonths(1).AddDays(14);// gösterme ve kullanılabilri bakiye son gün
+
+            DateTime dt_Ay_son = dt_Ay_ilkGun.AddMonths(1).AddDays(-1);// ayın son günü
+
+
+            List<Verigoster> verilist = new List<Verigoster>();
+
+            //&&(x.addDate>= dt_Ay_ilkGun&&x.addDate<= dt_Ay_sonGun)
+            var bankkartları = db.AddExpense.Where(x => x.cardId == 1).ToList();
+            Verigoster veriler = new Verigoster();
+            double ayiciharcama = 0, kullanılabilirbakiye = 0;
+            foreach (var item in bankkartları)
+            {
+                DateTime tarihhesap = Convert.ToDateTime(item.addDate);
+                int tarihekle = Convert.ToInt32(item.numberOfInstallments);
+                tarihhesap = tarihhesap.AddMonths(tarihekle);
+                //DateTime tarihkontrol = DateTime.Now.AddMonths(Convert.ToInt32(item.numberOfInstallments));
+
+
+                if (item.addDate >= dt_Ay_ilkGun && item.addDate <= dt_Ay_son)
+                {
+                    donemici = donemici + Convert.ToDouble(item.installmentAmount);
+
+
+
+                    decimal moneydonem = Convert.ToDecimal(donemici);
+
+                    string moneyFormatdonem = moneydonem.ToString("#,##0.00");
+                    carddonem.Text = moneyFormatdonem + "TL";
+                }
+                if (tarihhesap >= item.CreditCard.paymentDueDate)
+                {
+
+
+                    string mail = "";
+                    if (item.mailOrder == 0)
+                    {
+                        mail = "Mail Order";
+                    }
+                    veriler = new Verigoster
+                    {
+                        id = item.id,
+                        bankName = item.CreditCard.bankName,
+                        companyName = item.companyName,
+                        productCategory = item.productCategory,
+                        numberOfInstallments = Convert.ToInt32(item.numberOfInstallments),
+                        installmentAmount = Convert.ToInt32(item.installmentAmount),
+
+                        aggregateAmount = Convert.ToDouble(item.aggregateAmount),
+                        addDate = Convert.ToDateTime(item.addDate),
+                        mailOrder = mail,
+                        explantationCompany = item.explanationCompany
+
+                    };
+                    verilist.Add(veriler);
+                    buayekstretopla = buayekstretopla + Convert.ToDouble(item.installmentAmount);
+
+                    decimal buay = Convert.ToDecimal(buayekstretopla);
+                    string moneyFormatbuay = buay.ToString("#,##0.00");
+                    cardbuay.Text = moneyFormatbuay + "TL";
+
+
+
+
+                    kullanılabilirbakiye = Convert.ToDouble(item.CreditCard.balance) - (buayekstretopla + donemici);
+                    decimal kullan = Convert.ToDecimal(kullanılabilirbakiye);
+
+                    string moneyFormatkullan = kullan.ToString("#,##0.00");
+                    cardKullnabilir.Text = moneyFormatkullan + " TL";
+                }
+                cardName.Text = item.CreditCard.nameSurname;
+                cardNumber.Text = item.CreditCard.number;
+                cardDate.Text = item.CreditCard.expireDate;
+                cardCCV.Text = Convert.ToString(item.CreditCard.ccv);
+
+                decimal money = Convert.ToDecimal(item.CreditCard.balance);
+
+                string moneyFormat = money.ToString("#,##0.00");
+                cardlimit.Text = moneyFormat + "TL";
+
+                cardekstrekesim.Text = item.CreditCard.cutDate.ToString();
+                cardlastpay.Text = item.CreditCard.paymentDueDate.ToString();
+
+                ayiciharcama = +Convert.ToDouble(item.aggregateAmount);
+                //bu ay ödenecek tutar aslında geçen aaydan ödenecek tutar
+                //dönem içi harcama bu ayın hacaası
+                //kullanılabilirbakiye=
+                //  cardlastpay.Text = Convert.ToString(item.CreditCard.paymentDueDate);
+
+
+            }
+
+
+
+
+
+            dataGridView1.DataSource = verilist.ToList();
+            dataGridView1.Columns[0].HeaderText = "Sıra";
+            dataGridView1.Columns[2].HeaderText = "Alınan Firma";
+            dataGridView1.Columns[1].HeaderText = "Alınan Şirket";
+            dataGridView1.Columns[3].HeaderText = "Kart Adı";
+            dataGridView1.Columns[4].HeaderText = "Kategori";
+            dataGridView1.Columns[5].HeaderText = "Taksit Sayısı";
+            dataGridView1.Columns[6].HeaderText = "Taksit Tutarı";
+            dataGridView1.Columns[7].HeaderText = "Toplam Tutar";
+            dataGridView1.Columns[8].HeaderText = "Eklenme Tarihi";
+            dataGridView1.Columns[9].HeaderText = "Mail Order";
+
+
+        }
+
+        private void Form1_MouseDown_1(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                ReleaseCapture();
+                SendMessage(Handle, WM_NCLBUTTONDOWN, HT_CAPTION, 0);
+            }
+        }
     }
     
 }

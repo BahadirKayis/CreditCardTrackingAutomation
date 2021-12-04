@@ -6,8 +6,8 @@
     <edmx:Diagrams>
       <Diagram DiagramId="147eb7e4bd4840479d122811a33923ce" Name="Diagram1">
         <EntityTypeShape EntityType="CreditCardTrackingModel.AddExpense" Width="1.5" PointX="3" PointY="1" />
-        <EntityTypeShape EntityType="CreditCardTrackingModel.CreditCard" Width="1.5" PointX="0.75" PointY="1" />
-        <EntityTypeShape EntityType="CreditCardTrackingModel.sysdiagrams" Width="1.5" PointX="0.75" PointY="4.75" />
+        <EntityTypeShape EntityType="CreditCardTrackingModel.CreditCard" Width="1.5" PointX="0.75" PointY="1.125" />
+        <EntityTypeShape EntityType="CreditCardTrackingModel.sysdiagrams" Width="1.5" PointX="5.75" PointY="0.75" />
         <AssociationConnector Association="CreditCardTrackingModel.FK_AddExpense_CreditCard" />
       </Diagram>
     </edmx:Diagrams>

@@ -10,6 +10,7 @@ namespace Kredi_Kartı_Takip
     {
         public int id { get; set; }
         public string companyName { get; set; }
+        public string explantationCompany { get; set; }
         public string bankName { get; set; }
         public string productCategory { get; set; }
         public int numberOfInstallments { get; set; }

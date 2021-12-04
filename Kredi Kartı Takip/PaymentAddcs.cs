@@ -129,21 +129,21 @@ namespace Kredi_Kartı_Takip
         private void expenseAdd_Click(object sender, EventArgs e)
         {
 
-            if (kartlar.SelectedText!="")
+            if (kartlar.Text == "")
             {
                 MessageBox.Show("Hangi Banka Olduğunu Seçiniz");
             }
-            else if (firmatext.Text!=""&&alinanfirma.SelectedText!="")
+            if (firmatext.Text==""&&alinanfirma.Text=="")
             {
                 MessageBox.Show("Hangi Firma Olduğunu Seçiniz veya Yazınız");
             }
-               else if (numberOfIns.Text!="0"|| numberOfIns.Text != "")
+               else if (numberOfIns.Text=="0"|| numberOfIns.Text == "")
             {
                 MessageBox.Show("Taksit Sayısı Giriniz ");
             }
-            else if (insAmoun.Text!="0"|| insAmoun.Text != "")
+            else if (insAmoun.Text=="0"|| insAmoun.Text == "")
             {
-                MessageBox.Show("Taksit Sayısı Giriniz ");
+                MessageBox.Show("Taksit Tutarı Giriniz ");
             }
             else
             {
@@ -163,8 +163,9 @@ namespace Kredi_Kartı_Takip
                 neweExpense.productCategory = productCategory.Text.ToString();
                 neweExpense.numberOfInstallments = Convert.ToUInt16(numberOfIns.Text.ToString());
                 neweExpense.installmentAmount = insAmoun.Text.ToString();
-                neweExpense.aggregateAmount = aggreAmount.Text.ToString();
+                neweExpense.aggregateAmount = gizlitoplamtutar.Text.ToString();
                 neweExpense.addDate = Convert.ToDateTime(addDate.Text.ToString());
+                neweExpense.explanationCompany = explanationCompany.Text.ToString();
                 // 0 ise mail order
                 if (checkBox1.Checked == true)
                 {
@@ -189,6 +190,7 @@ namespace Kredi_Kartı_Takip
                 productCategory.Text = "";
                 numberOfIns.Text = "0";
                 insAmoun.Text = "0";
+                explanationCompany.Text = "";
                 checkBox1.Checked = false;
 
             }
@@ -238,7 +240,7 @@ namespace Kredi_Kartı_Takip
 
 
             double toplam_tutar = Convert.ToDouble(taksit_sayisi) *Convert.ToDouble( taksit_tutarı);
-
+            gizlitoplamtutar.Text = toplam_tutar.ToString();
             //aggreAmount.Text = toplam_tutar.ToString();
 
           
@@ -320,6 +322,11 @@ namespace Kredi_Kartı_Takip
             editekstre.Value= Convert.ToDateTime(kartid.cutDate);
             editekstreson.Value= Convert.ToDateTime(kartid.paymentDueDate);
             editkartlimit.Text= kartid.balance.ToString();
+
+        }
+
+        private void groupBox1_Enter(object sender, EventArgs e)
+        {
 
         }
     }

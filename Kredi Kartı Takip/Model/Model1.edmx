@@ -11,12 +11,13 @@
           </Key>
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="cardId" Type="int" />
-          <Property Name="companyName" Type="varchar" MaxLength="50" />
+          <Property Name="companyName" Type="nvarchar(max)" />
+          <Property Name="explanationCompany" Type="nvarchar(max)" />
           <Property Name="productCategory" Type="nvarchar" MaxLength="50" />
           <Property Name="numberOfInstallments" Type="int" />
           <Property Name="installmentAmount" Type="nvarchar" MaxLength="50" />
           <Property Name="aggregateAmount" Type="nvarchar(max)" />
-          <Property Name="addDate" Type="datetime" />
+          <Property Name="addDate" Type="date" />
           <Property Name="mailOrder" Type="int" />
         </EntityType>
         <EntityType Name="CreditCard">
@@ -29,8 +30,8 @@
           <Property Name="number" Type="nvarchar(max)" />
           <Property Name="expireDate" Type="nvarchar" MaxLength="50" />
           <Property Name="ccv" Type="int" />
-          <Property Name="cutDate" Type="datetime" />
-          <Property Name="paymentDueDate" Type="datetime" />
+          <Property Name="cutDate" Type="date" />
+          <Property Name="paymentDueDate" Type="date" />
           <Property Name="balance" Type="nvarchar(max)" />
         </EntityType>
         <EntityType Name="sysdiagrams">
@@ -83,12 +84,13 @@
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="cardId" Type="Int32" />
-          <Property Name="companyName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="companyName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="explanationCompany" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="productCategory" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="numberOfInstallments" Type="Int32" />
           <Property Name="installmentAmount" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="aggregateAmount" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="addDate" Type="DateTime" Precision="3" />
+          <Property Name="addDate" Type="DateTime" Precision="0" />
           <Property Name="mailOrder" Type="Int32" />
           <NavigationProperty Name="CreditCard" Relationship="CreditCardTrackingModel.FK_AddExpense_CreditCard" FromRole="AddExpense" ToRole="CreditCard" />
         </EntityType>
@@ -102,8 +104,8 @@
           <Property Name="number" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="expireDate" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="ccv" Type="Int32" />
-          <Property Name="cutDate" Type="DateTime" Precision="3" />
-          <Property Name="paymentDueDate" Type="DateTime" Precision="3" />
+          <Property Name="cutDate" Type="DateTime" Precision="0" />
+          <Property Name="paymentDueDate" Type="DateTime" Precision="0" />
           <Property Name="balance" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="AddExpense" Relationship="CreditCardTrackingModel.FK_AddExpense_CreditCard" FromRole="CreditCard" ToRole="AddExpense" />
         </EntityType>
@@ -144,6 +146,7 @@
                 <ScalarProperty Name="installmentAmount" ColumnName="installmentAmount" />
                 <ScalarProperty Name="numberOfInstallments" ColumnName="numberOfInstallments" />
                 <ScalarProperty Name="productCategory" ColumnName="productCategory" />
+                <ScalarProperty Name="explanationCompany" ColumnName="explanationCompany" />
                 <ScalarProperty Name="companyName" ColumnName="companyName" />
                 <ScalarProperty Name="cardId" ColumnName="cardId" />
                 <ScalarProperty Name="id" ColumnName="id" />
