@@ -29,6 +29,7 @@ namespace Kredi_Kartı_Takip.Model
         public Nullable<System.DateTime> cutDate { get; set; }
         public Nullable<System.DateTime> paymentDueDate { get; set; }
         public string balance { get; set; }
+        public Nullable<int> busniss { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<AddExpense> AddExpense { get; set; }

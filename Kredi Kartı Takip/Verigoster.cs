@@ -13,7 +13,7 @@ namespace Kredi_Kartı_Takip
         public string explantationCompany { get; set; }
         public string bankName { get; set; }
         public string productCategory { get; set; }
-        public int numberOfInstallments { get; set; }
+        public double numberOfInstallments { get; set; }
         public double installmentAmount { get; set; }
         public double aggregateAmount { get; set; }
         public DateTime addDate { get; set; }

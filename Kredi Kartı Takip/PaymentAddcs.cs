@@ -68,6 +68,14 @@ namespace Kredi_Kartı_Takip
                 newcard.cutDate = Convert.ToDateTime(cutDate.Text.ToString());
                 newcard.paymentDueDate = Convert.ToDateTime(paymentDueDate.Text.ToString());
                 newcard.balance = Convert.ToString(balance.Text.ToString());
+                if (checkBox2.Checked)
+                {
+                    newcard.busniss = 0;
+                }
+                else
+                {
+                    newcard.busniss = 1;
+                }
                 db.CreditCard.Add(newcard);
                 db.SaveChanges();
                 foreach (Control c in Controls)
@@ -202,7 +210,7 @@ namespace Kredi_Kartı_Takip
         private void numberOfIns_TextChanged(object sender, EventArgs e)
 
         {
-            int taksit_sayisi=0, taksit_tutarı=0;
+            double taksit_sayisi=0, taksit_tutarı=0;
             if (numberOfIns.Text.ToString()!="")
             {
                 taksit_sayisi = Convert.ToInt32(numberOfIns.Text.ToString());
@@ -210,7 +218,7 @@ namespace Kredi_Kartı_Takip
             }
             if (insAmoun.Text.ToString()!="")
             {
-                taksit_tutarı = Convert.ToInt32(insAmoun.Text.ToString());
+                taksit_tutarı = Convert.ToDouble(insAmoun.Text.ToString());
 
             }
 

@@ -39,6 +39,7 @@ namespace Kredi_Kartı_Takip
             this.label5 = new System.Windows.Forms.Label();
             this.kartlar = new System.Windows.Forms.ComboBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.gizlitoplamtutar = new System.Windows.Forms.Label();
             this.explanationCompany = new System.Windows.Forms.TextBox();
             this.label24 = new System.Windows.Forms.Label();
             this.expenseAdd = new System.Windows.Forms.Button();
@@ -68,7 +69,6 @@ namespace Kredi_Kartı_Takip
             this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.back = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.editkart = new System.Windows.Forms.ComboBox();
             this.editekstreson = new System.Windows.Forms.DateTimePicker();
@@ -87,7 +87,7 @@ namespace Kredi_Kartı_Takip
             this.label21 = new System.Windows.Forms.Label();
             this.label22 = new System.Windows.Forms.Label();
             this.label23 = new System.Windows.Forms.Label();
-            this.gizlitoplamtutar = new System.Windows.Forms.Label();
+            this.checkBox2 = new System.Windows.Forms.CheckBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -98,7 +98,7 @@ namespace Kredi_Kartı_Takip
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(5, 220);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(77, 16);
+            this.label1.Size = new System.Drawing.Size(84, 16);
             this.label1.TabIndex = 0;
             this.label1.Text = "Taksit Sayısı";
             // 
@@ -127,7 +127,7 @@ namespace Kredi_Kartı_Takip
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(5, 260);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(75, 16);
+            this.label2.Size = new System.Drawing.Size(83, 16);
             this.label2.TabIndex = 2;
             this.label2.Text = "Taksit tutarı";
             // 
@@ -145,7 +145,7 @@ namespace Kredi_Kartı_Takip
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(5, 300);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(86, 16);
+            this.label3.Size = new System.Drawing.Size(92, 16);
             this.label3.TabIndex = 4;
             this.label3.Text = "Toplam Tutar";
             // 
@@ -154,7 +154,7 @@ namespace Kredi_Kartı_Takip
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(5, 340);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(85, 16);
+            this.label4.Size = new System.Drawing.Size(92, 16);
             this.label4.TabIndex = 6;
             this.label4.Text = "Eklenen Tarih";
             // 
@@ -163,7 +163,7 @@ namespace Kredi_Kartı_Takip
             this.label5.AutoSize = true;
             this.label5.Location = new System.Drawing.Point(7, 55);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(56, 16);
+            this.label5.Size = new System.Drawing.Size(57, 16);
             this.label5.TabIndex = 8;
             this.label5.Text = "Kart Seç";
             // 
@@ -179,6 +179,7 @@ namespace Kredi_Kartı_Takip
             // 
             // groupBox1
             // 
+            this.groupBox1.BackColor = System.Drawing.Color.MistyRose;
             this.groupBox1.Controls.Add(this.gizlitoplamtutar);
             this.groupBox1.Controls.Add(this.explanationCompany);
             this.groupBox1.Controls.Add(this.label24);
@@ -199,7 +200,9 @@ namespace Kredi_Kartı_Takip
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.aggreAmount);
-            this.groupBox1.Location = new System.Drawing.Point(24, 72);
+            this.groupBox1.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox1.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.groupBox1.Location = new System.Drawing.Point(12, 72);
             this.groupBox1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
@@ -208,6 +211,16 @@ namespace Kredi_Kartı_Takip
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Harcama Ekle";
             this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
+            // 
+            // gizlitoplamtutar
+            // 
+            this.gizlitoplamtutar.AutoSize = true;
+            this.gizlitoplamtutar.Location = new System.Drawing.Point(295, 394);
+            this.gizlitoplamtutar.Name = "gizlitoplamtutar";
+            this.gizlitoplamtutar.Size = new System.Drawing.Size(108, 16);
+            this.gizlitoplamtutar.TabIndex = 21;
+            this.gizlitoplamtutar.Text = "gizlitoplamtutar";
+            this.gizlitoplamtutar.Visible = false;
             // 
             // explanationCompany
             // 
@@ -219,9 +232,9 @@ namespace Kredi_Kartı_Takip
             // label24
             // 
             this.label24.AutoSize = true;
-            this.label24.Location = new System.Drawing.Point(5, 130);
+            this.label24.Location = new System.Drawing.Point(5, 135);
             this.label24.Name = "label24";
-            this.label24.Size = new System.Drawing.Size(95, 16);
+            this.label24.Size = new System.Drawing.Size(103, 16);
             this.label24.TabIndex = 19;
             this.label24.Text = "Firma Açıklama";
             this.label24.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -261,7 +274,7 @@ namespace Kredi_Kartı_Takip
             this.checkBox1.Location = new System.Drawing.Point(206, 367);
             this.checkBox1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(91, 20);
+            this.checkBox1.Size = new System.Drawing.Size(93, 20);
             this.checkBox1.TabIndex = 15;
             this.checkBox1.Text = "Mail Order";
             this.checkBox1.UseVisualStyleBackColor = true;
@@ -299,7 +312,7 @@ namespace Kredi_Kartı_Takip
             this.label12.AutoSize = true;
             this.label12.Location = new System.Drawing.Point(7, 95);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(40, 16);
+            this.label12.Size = new System.Drawing.Size(43, 16);
             this.label12.TabIndex = 12;
             this.label12.Text = "Firma";
             this.label12.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -309,14 +322,16 @@ namespace Kredi_Kartı_Takip
             this.label11.AutoSize = true;
             this.label11.Location = new System.Drawing.Point(5, 180);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(90, 16);
+            this.label11.Size = new System.Drawing.Size(94, 16);
             this.label11.TabIndex = 10;
             this.label11.Text = "Ürün Kategori";
             this.label11.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // groupBox2
             // 
+            this.groupBox2.BackColor = System.Drawing.Color.MistyRose;
             this.groupBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.groupBox2.Controls.Add(this.checkBox2);
             this.groupBox2.Controls.Add(this.paymentDueDate);
             this.groupBox2.Controls.Add(this.cutDate);
             this.groupBox2.Controls.Add(this.expireDate);
@@ -335,7 +350,9 @@ namespace Kredi_Kartı_Takip
             this.groupBox2.Controls.Add(this.label7);
             this.groupBox2.Controls.Add(this.label6);
             this.groupBox2.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.groupBox2.Location = new System.Drawing.Point(975, 72);
+            this.groupBox2.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox2.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.groupBox2.Location = new System.Drawing.Point(923, 72);
             this.groupBox2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
@@ -380,14 +397,15 @@ namespace Kredi_Kartı_Takip
             // 
             // cardAdd
             // 
+            this.cardAdd.BackColor = System.Drawing.Color.MistyRose;
             this.cardAdd.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.cardAdd.Location = new System.Drawing.Point(218, 380);
+            this.cardAdd.Location = new System.Drawing.Point(206, 425);
             this.cardAdd.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.cardAdd.Name = "cardAdd";
             this.cardAdd.Size = new System.Drawing.Size(90, 30);
             this.cardAdd.TabIndex = 22;
             this.cardAdd.Text = "Ekle";
-            this.cardAdd.UseVisualStyleBackColor = true;
+            this.cardAdd.UseVisualStyleBackColor = false;
             this.cardAdd.Click += new System.EventHandler(this.cardAdd_Click);
             // 
             // balance
@@ -430,7 +448,7 @@ namespace Kredi_Kartı_Takip
             this.label15.AutoSize = true;
             this.label15.Location = new System.Drawing.Point(7, 335);
             this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(66, 16);
+            this.label15.Size = new System.Drawing.Size(73, 16);
             this.label15.TabIndex = 11;
             this.label15.Text = "Kart Limiti";
             // 
@@ -439,7 +457,7 @@ namespace Kredi_Kartı_Takip
             this.label14.AutoSize = true;
             this.label14.Location = new System.Drawing.Point(7, 295);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(150, 16);
+            this.label14.Size = new System.Drawing.Size(158, 16);
             this.label14.TabIndex = 6;
             this.label14.Text = "Ekstre Son ödeme Tarihi";
             // 
@@ -448,7 +466,7 @@ namespace Kredi_Kartı_Takip
             this.label13.AutoSize = true;
             this.label13.Location = new System.Drawing.Point(7, 255);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(118, 16);
+            this.label13.Size = new System.Drawing.Size(126, 16);
             this.label13.TabIndex = 5;
             this.label13.Text = "Ekstre Kesim Tarihi";
             // 
@@ -457,7 +475,7 @@ namespace Kredi_Kartı_Takip
             this.label10.AutoSize = true;
             this.label10.Location = new System.Drawing.Point(7, 215);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(32, 16);
+            this.label10.Size = new System.Drawing.Size(33, 16);
             this.label10.TabIndex = 4;
             this.label10.Text = "CCV";
             // 
@@ -466,7 +484,7 @@ namespace Kredi_Kartı_Takip
             this.label9.AutoSize = true;
             this.label9.Location = new System.Drawing.Point(7, 175);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(119, 16);
+            this.label9.Size = new System.Drawing.Size(130, 16);
             this.label9.TabIndex = 3;
             this.label9.Text = "Son Kullanım Tarihi";
             // 
@@ -475,7 +493,7 @@ namespace Kredi_Kartı_Takip
             this.label8.AutoSize = true;
             this.label8.Location = new System.Drawing.Point(7, 135);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(92, 16);
+            this.label8.Size = new System.Drawing.Size(96, 16);
             this.label8.TabIndex = 2;
             this.label8.Text = "Kart Numarası";
             // 
@@ -494,38 +512,27 @@ namespace Kredi_Kartı_Takip
             this.label6.AutoSize = true;
             this.label6.Location = new System.Drawing.Point(7, 95);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(124, 16);
+            this.label6.Size = new System.Drawing.Size(132, 16);
             this.label6.TabIndex = 0;
             this.label6.Text = "Kart Üzerindeki İsim";
             // 
             // back
             // 
+            this.back.BackColor = System.Drawing.Color.SteelBlue;
             this.back.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.back.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.back.Location = new System.Drawing.Point(24, 4);
             this.back.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.back.Name = "back";
             this.back.Size = new System.Drawing.Size(87, 28);
             this.back.TabIndex = 12;
             this.back.Text = "Geri";
-            this.back.UseVisualStyleBackColor = true;
+            this.back.UseVisualStyleBackColor = false;
             this.back.Click += new System.EventHandler(this.back_Click);
-            // 
-            // button1
-            // 
-            this.button1.AutoEllipsis = true;
-            this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button1.Image = global::Kredi_Kartı_Takip.Properties.Resources.removee;
-            this.button1.Location = new System.Drawing.Point(1364, 4);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(28, 25);
-            this.button1.TabIndex = 13;
-            this.button1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // groupBox3
             // 
+            this.groupBox3.BackColor = System.Drawing.Color.MistyRose;
             this.groupBox3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.groupBox3.Controls.Add(this.editkart);
             this.groupBox3.Controls.Add(this.editekstreson);
@@ -545,7 +552,9 @@ namespace Kredi_Kartı_Takip
             this.groupBox3.Controls.Add(this.label22);
             this.groupBox3.Controls.Add(this.label23);
             this.groupBox3.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.groupBox3.Location = new System.Drawing.Point(493, 72);
+            this.groupBox3.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox3.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.groupBox3.Location = new System.Drawing.Point(471, 72);
             this.groupBox3.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
@@ -592,7 +601,7 @@ namespace Kredi_Kartı_Takip
             // editbutton
             // 
             this.editbutton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.editbutton.Location = new System.Drawing.Point(218, 380);
+            this.editbutton.Location = new System.Drawing.Point(162, 425);
             this.editbutton.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.editbutton.Name = "editbutton";
             this.editbutton.Size = new System.Drawing.Size(90, 30);
@@ -639,7 +648,7 @@ namespace Kredi_Kartı_Takip
             this.label16.AutoSize = true;
             this.label16.Location = new System.Drawing.Point(7, 335);
             this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(66, 16);
+            this.label16.Size = new System.Drawing.Size(73, 16);
             this.label16.TabIndex = 11;
             this.label16.Text = "Kart Limiti";
             // 
@@ -648,7 +657,7 @@ namespace Kredi_Kartı_Takip
             this.label17.AutoSize = true;
             this.label17.Location = new System.Drawing.Point(7, 295);
             this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(150, 16);
+            this.label17.Size = new System.Drawing.Size(158, 16);
             this.label17.TabIndex = 6;
             this.label17.Text = "Ekstre Son ödeme Tarihi";
             // 
@@ -657,7 +666,7 @@ namespace Kredi_Kartı_Takip
             this.label18.AutoSize = true;
             this.label18.Location = new System.Drawing.Point(7, 255);
             this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(118, 16);
+            this.label18.Size = new System.Drawing.Size(126, 16);
             this.label18.TabIndex = 5;
             this.label18.Text = "Ekstre Kesim Tarihi";
             // 
@@ -666,7 +675,7 @@ namespace Kredi_Kartı_Takip
             this.label19.AutoSize = true;
             this.label19.Location = new System.Drawing.Point(7, 215);
             this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(32, 16);
+            this.label19.Size = new System.Drawing.Size(33, 16);
             this.label19.TabIndex = 4;
             this.label19.Text = "CCV";
             // 
@@ -675,7 +684,7 @@ namespace Kredi_Kartı_Takip
             this.label20.AutoSize = true;
             this.label20.Location = new System.Drawing.Point(7, 175);
             this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(119, 16);
+            this.label20.Size = new System.Drawing.Size(130, 16);
             this.label20.TabIndex = 3;
             this.label20.Text = "Son Kullanım Tarihi";
             // 
@@ -684,17 +693,17 @@ namespace Kredi_Kartı_Takip
             this.label21.AutoSize = true;
             this.label21.Location = new System.Drawing.Point(7, 135);
             this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(92, 16);
+            this.label21.Size = new System.Drawing.Size(96, 16);
             this.label21.TabIndex = 2;
             this.label21.Text = "Kart Numarası";
             // 
             // label22
             // 
             this.label22.AutoSize = true;
-            this.label22.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.label22.Location = new System.Drawing.Point(7, 55);
+            this.label22.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.label22.Location = new System.Drawing.Point(7, 58);
             this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(86, 16);
+            this.label22.Size = new System.Drawing.Size(97, 16);
             this.label22.TabIndex = 1;
             this.label22.Text = "Hangi Banka";
             // 
@@ -703,36 +712,37 @@ namespace Kredi_Kartı_Takip
             this.label23.AutoSize = true;
             this.label23.Location = new System.Drawing.Point(7, 95);
             this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(124, 16);
+            this.label23.Size = new System.Drawing.Size(132, 16);
             this.label23.TabIndex = 0;
             this.label23.Text = "Kart Üzerindeki İsim";
             // 
-            // gizlitoplamtutar
+            // checkBox2
             // 
-            this.gizlitoplamtutar.AutoSize = true;
-            this.gizlitoplamtutar.Location = new System.Drawing.Point(295, 394);
-            this.gizlitoplamtutar.Name = "gizlitoplamtutar";
-            this.gizlitoplamtutar.Size = new System.Drawing.Size(99, 16);
-            this.gizlitoplamtutar.TabIndex = 21;
-            this.gizlitoplamtutar.Text = "gizlitoplamtutar";
+            this.checkBox2.AutoSize = true;
+            this.checkBox2.Location = new System.Drawing.Point(297, 367);
+            this.checkBox2.Name = "checkBox2";
+            this.checkBox2.Size = new System.Drawing.Size(91, 20);
+            this.checkBox2.TabIndex = 27;
+            this.checkBox2.Text = "Şahsi Kart";
+            this.checkBox2.UseVisualStyleBackColor = true;
             // 
             // PaymentAddcs
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.Salmon;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.ClientSize = new System.Drawing.Size(1394, 686);
+            this.ClientSize = new System.Drawing.Size(1398, 686);
             this.Controls.Add(this.groupBox3);
-            this.Controls.Add(this.button1);
             this.Controls.Add(this.back);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "PaymentAddcs";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "PaymentAddcs";
+            this.Text = "Ekleme Ekranı";
             this.Load += new System.EventHandler(this.PaymentAddcs_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
@@ -783,7 +793,6 @@ namespace Kredi_Kartı_Takip
         private System.Windows.Forms.DateTimePicker addDate;
         private System.Windows.Forms.Button expenseAdd;
         private System.Windows.Forms.Button back;
-        private System.Windows.Forms.Button button1;
         public System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.DateTimePicker editekstreson;
         private System.Windows.Forms.DateTimePicker editekstre;
@@ -805,5 +814,6 @@ namespace Kredi_Kartı_Takip
         private System.Windows.Forms.TextBox explanationCompany;
         private System.Windows.Forms.Label label24;
         private System.Windows.Forms.Label gizlitoplamtutar;
+        private System.Windows.Forms.CheckBox checkBox2;
     }
 }

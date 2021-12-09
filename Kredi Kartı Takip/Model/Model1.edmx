@@ -33,6 +33,7 @@
           <Property Name="cutDate" Type="date" />
           <Property Name="paymentDueDate" Type="date" />
           <Property Name="balance" Type="nvarchar(max)" />
+          <Property Name="busniss" Type="int" />
         </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
@@ -107,6 +108,7 @@
           <Property Name="cutDate" Type="DateTime" Precision="0" />
           <Property Name="paymentDueDate" Type="DateTime" Precision="0" />
           <Property Name="balance" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="busniss" Type="Int32" />
           <NavigationProperty Name="AddExpense" Relationship="CreditCardTrackingModel.FK_AddExpense_CreditCard" FromRole="CreditCard" ToRole="AddExpense" />
         </EntityType>
         <EntityType Name="sysdiagrams">
@@ -156,6 +158,7 @@
           <EntitySetMapping Name="CreditCard">
             <EntityTypeMapping TypeName="CreditCardTrackingModel.CreditCard">
               <MappingFragment StoreEntitySet="CreditCard">
+                <ScalarProperty Name="busniss" ColumnName="busniss" />
                 <ScalarProperty Name="balance" ColumnName="balance" />
                 <ScalarProperty Name="paymentDueDate" ColumnName="paymentDueDate" />
                 <ScalarProperty Name="cutDate" ColumnName="cutDate" />

@@ -47,19 +47,33 @@ namespace Kredi_Kartı_Takip
 
             var creditcard = db.CreditCard.OrderByDescending(x => x.id).ToList();
             
-            int xy = 60;
+            int xy = 5;
+            int yx = 5;
+            int i =0;
             foreach (var item in creditcard)
             {
                 Button newButton = new Button();
+              
+               
+                if (item.busniss==0)
+                {
+                    xy = xy + 150;
 
+                    newButton.Location = new Point(xy, 575);
 
+                }
+                else
+                {
+                    yx = yx + 150;
+                    newButton.Location = new Point(yx, 625);
+                }
                 this.Controls.Add(newButton);
                 newButton.Text = item.bankName;
-                xy = xy + 50;
-                newButton.Location = new Point(49, xy);
+               
                 newButton.Name = Convert.ToString(item.id);
                
-                newButton.Size = new Size(100, 30);
+                newButton.Size = new Size(140, 30);
+                newButton.BackColor = Color.White;
                 newButton.Click += new EventHandler(button_Click);
                 newButton.FlatStyle = FlatStyle.Popup;
                 newButton.Font = new Font("Microsoft Tai Le", 10);
@@ -259,8 +273,8 @@ namespace Kredi_Kartı_Takip
                         bankName = item.CreditCard.bankName,
                         companyName = item.companyName,
                         productCategory = item.productCategory,
-                        numberOfInstallments = Convert.ToInt32(item.numberOfInstallments),
-                        installmentAmount = Convert.ToInt32(item.installmentAmount)
+                        numberOfInstallments = Convert.ToDouble(item.numberOfInstallments),
+                        installmentAmount = Convert.ToDouble(item.installmentAmount)
                     ,
                         aggregateAmount = Convert.ToDouble(item.aggregateAmount),
                         addDate = Convert.ToDateTime(item.addDate),
@@ -303,7 +317,7 @@ namespace Kredi_Kartı_Takip
                
             }
 
-            kullanılabilirbakiye = Convert.ToDouble(kartlarigetir.balance) - (buayekstretopla + donemici);
+            kullanılabilirbakiye = Convert.ToDouble(kartlarigetir.balance) - (buayekstretopla);
             decimal kullan = Convert.ToDecimal(kullanılabilirbakiye);
 
             string moneyFormatkullan = kullan.ToString("#,##0.00");
@@ -506,6 +520,11 @@ namespace Kredi_Kartı_Takip
                 ReleaseCapture();
                 SendMessage(Handle, WM_NCLBUTTONDOWN, HT_CAPTION, 0);
             }
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
     
